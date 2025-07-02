@@ -39,7 +39,7 @@ app.get('/validar-token', (req, res) => {
     }
 
     db.query(
-        'SELECT * FROM tokens WHERE token = ? AND usado = FALSE AND vinculado = TRUE AND (data_expiracao IS NULL OR data_expiracao > NOW())',
+        'SELECT * FROM tokens WHERE token = ? AND vinculacao = TRUE AND (validade IS NULL OR validade > NOW())',
         [token],
         (err, results) => {
             if (err) {
