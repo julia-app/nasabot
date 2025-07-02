@@ -15,12 +15,13 @@ app.use(express.json());
 
 // Conexão com o banco de dados MySQL
 const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    port: process.env.DB_PORT || 3306
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'nasabot_user',
+  password: process.env.DB_PASSWORD || 'RedePesc@123',
+  database: process.env.DB_NAME || 'chatbot_db',
+  port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 3306
 });
+
 
 // Verifica conexão
 db.connect((err) => {
